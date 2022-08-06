@@ -20,7 +20,7 @@ foreach ($studentList as $student) {
 
 	if ($phones->count()) {
 		echo PHP_EOL;
-		echo "Telefone(s): ";
+		echo 'Telefone(s): ';
 
 		echo implode(', ', ($phones
 			->map(fn (Phone $phone) => $phone->number)
@@ -29,7 +29,7 @@ foreach ($studentList as $student) {
 
 	if ($courses->count()) {
 		echo PHP_EOL;
-		echo "Curso(s): ";
+		echo 'Curso(s): ';
 
 		echo implode(', ', ($courses
 			->map(fn (Course $course) => $course->name)
@@ -39,13 +39,3 @@ foreach ($studentList as $student) {
 }
 
 echo 'Count: ' . $studentRepository->count([]) . PHP_EOL . PHP_EOL;
-
-/* @var Student $student */
-$student = $studentRepository->find(2);
-echo "ID: $student->id Nome: $student->name\n\n";
-
-/* @var Student $student */
-$student = $studentRepository->findOneBy([
-	'name' => 'Fabio Madeira Peres',
-]);
-echo "ID: $student->id Nome: $student->name\n\n";
