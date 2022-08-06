@@ -38,4 +38,4 @@ foreach ($studentList as $student) {
 	echo PHP_EOL . PHP_EOL;
 }
 
-echo 'Count: ' . $studentRepository->count([]) . PHP_EOL . PHP_EOL;
+echo 'Count: ' . count($studentList) . PHP_EOL . PHP_EOL;
