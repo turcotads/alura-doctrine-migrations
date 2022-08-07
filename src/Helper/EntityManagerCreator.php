@@ -5,6 +5,7 @@ namespace Alura\Doctrine\Helper;
 use Doctrine\DBAL\Logging\Middleware;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
+use Symfony\Component\Cache\Adapter\PhpFilesAdapter;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -20,8 +21,13 @@ class EntityManagerCreator {
 		$consoleLogger = new ConsoleLogger($consoleOutput);
 		$logMiddleware = new Middleware($consoleLogger);
 		$config->setMiddlewares([
-			$logMiddleware
+			$logMiddleware,
 		]);
+
+		$config->setMetadataCache(new PhpFilesAdapter(
+			namespace: 'metadata_cache',
+			directory: __DIR__ . '/../../var/cache'
+		));
 
 		$conn = [
 			'driver' => 'pdo_sqlite',
