@@ -1,0 +1,59 @@
+<?php //62d276720c14b0533a27eaf16d759fbc
+
+namespace Symfony\Component\VarExporter\Internal;
+
+return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
+    $o = [
+        clone (($p = &Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT s0_.id AS id_0, s0_.name AS name_1 FROM Student s0_ WHERE (SELECT COUNT(*) FROM Phone p1_ WHERE p1_.student_id = s0_.id) > 2',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'student' => 'Alura\\Doctrine\\Entity\\Student',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'name_1' => 'name',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'student' => null,
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'student',
+                    'name_1' => 'student',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'Alura\\Doctrine\\Entity\\Student',
+                    'name_1' => 'Alura\\Doctrine\\Entity\\Student',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+);

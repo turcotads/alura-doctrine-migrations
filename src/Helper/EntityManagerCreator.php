@@ -24,9 +24,16 @@ class EntityManagerCreator {
 			$logMiddleware,
 		]);
 
+		$cacheDirectory = __DIR__ . '/../../var/cache';
+
 		$config->setMetadataCache(new PhpFilesAdapter(
 			namespace: 'metadata_cache',
-			directory: __DIR__ . '/../../var/cache'
+			directory: $cacheDirectory
+		));
+
+		$config->setQueryCache(new PhpFilesAdapter(
+			namespace: 'query_cache',
+			directory: $cacheDirectory
 		));
 
 		$conn = [
