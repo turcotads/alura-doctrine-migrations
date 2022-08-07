@@ -19,11 +19,12 @@ class Student {
 	#[OneToMany(
 		mappedBy: 'student',
 		targetEntity: Phone::class,
-		cascade: ["persist", "remove"]
+		cascade: ['persist', 'remove'],
+		fetch: 'EAGER'
 	)]
 	private Collection $phones;
 
-	#[ManyToMany(Course::class, inversedBy: "students")]
+	#[ManyToMany(Course::class, inversedBy: 'students')]
 	private Collection $courses;
 
 	public function __construct(
@@ -52,7 +53,6 @@ class Student {
 	public function phones(): Collection {
 		return $this->phones;
 	}
-
 
 	public function enrollInCourse(Course $course): void {
 		if ($this->courses->contains($course)) {
