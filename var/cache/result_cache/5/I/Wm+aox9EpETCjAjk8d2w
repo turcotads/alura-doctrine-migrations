@@ -1,0 +1,9 @@
+<?php //123f8cda34b3b4f65d067be76e2019b0f4197c36
+
+return [1660005913, [
+    'query=SELECT count(s0_.id) AS sclr_0 FROM Student s0_ WHERE (SELECT COUNT(*) FROM Phone p1_ WHERE p1_.student_id = s0_.id) = 0&params=a:0:{}&types=a:0:{}&connectionParams=a16c15a36c4217064c9b2ee9f5a64ad250678a14aac6e1fcd3094573987c3a5f' => [
+        [
+            'sclr_0' => 0,
+        ],
+    ],
+]];

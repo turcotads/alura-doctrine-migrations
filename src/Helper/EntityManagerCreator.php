@@ -42,8 +42,12 @@ class EntityManagerCreator {
 		));
 
 		$conn = [
-			'driver' => 'pdo_sqlite',
-			'path' => __DIR__ . '/../../db.sqlite',
+			'driver' => 'pdo_pgsql',
+			'user' => 'docker',
+			'password' => 'docker',
+			'host' => 'localhost',
+			'port' => '5432',
+			'dbname' => 'docker',
 		];
 
 		return EntityManager::create($conn, $config);
